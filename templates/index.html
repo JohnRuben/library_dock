@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% include 'status.html' %}
+
+<div class="row">
+  <div class="col-md-5">
+    <br>
+    <h5>Members:</h5>
+    <hr>
+    <div class="card card-body">
+      <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_member' %}">Create New Member</a>
+      <table class="table table-sm">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>city</th>
+          <th></th>
+        </tr>
+        {% for items in members %}
+
+        <tr>
+            <td>{{ items.name }}</td>
+          <td>{{ items.email_id }}</td>
+            <td>{{ items.phone }}</td>
+          <td>{{ items.city }}</td>
+          <td><a class="btn btn-sm btn-info" href="{% url 'members' items.id %}">View</a></td>
+          <td><a class="btn btn-sm btn-info" href="{% url 'update_member' items.id %}">Update</a></td>
+          <td><a class="btn btn-sm btn-danger" href="{% url 'delete_member' items.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+  <div class="col col-md-6">
+    <br>
+    <h5>Book Leases:</h5>
+    <hr>
+    <div class="card card-body">
+      <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_lease' %}">Create New Lease</a>
+      <table class="table table-sm">
+        <tr>
+          <th>Book</th>
+          <th>Member</th>
+          <th>Lease Date</th>
+          <th>Status</th>
+        </tr>
+        {% for items in leased %}
+
+        <tr>
+          <td>{{ items.book }}</td>
+          <td>{{ items.member }}</td>
+          <td>{{ items.lease_date }}</td>
+          <td>{{ items.status }}</td>
+          <td><a class="btn btn-sm btn-info" href="{% url 'update_lease' items.id %}">Update</a></td>
+          <td><a class="btn btn-sm btn-danger" href="{% url 'delete_lease' items.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+</div>
+<div class="col-md-5">
+    <br>
+    <h5>Books:</h5>
+    <hr>
+    <div class="card card-body">
+      <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_book' %}">Create New Book</a>
+      <table class="table table-sm">
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th></th>
+        </tr>
+        {% for items in books %}
+
+        <tr>
+            <td>{{ items.name }}</td>
+          <td>{{ items.category }}</td>
+            <td>{{ items.price }}</td>
+          <td>{{ items.qty }}</td>
+          <td><a class="btn btn-sm btn-info" href="{% url 'update_book' items.id %}">Update</a></td>
+          <td><a class="btn btn-sm btn-danger" href="{% url 'delete_book' items.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}
+
+
+

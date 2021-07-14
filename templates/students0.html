@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form method="get">
+                {{ studentFilter.form }}
+                <button class="btn btn-primary" type="submit">Filter</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Students:</h5>
+        </div>
+
+        <div class="card card-body">
+
+            <table class="table">
+
+                <tr>
+
+                    <th>Name </th>
+                    <th>Grade</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+                {% for items in student %}
+                <tr>
+                    <td>{{ items.name }}</td>
+                    <td>{{ items.grade }}</td>
+                    <td>{{ items.gender }}</td>
+                    <td>{{ items.email_id }}</td>
+                    <td>{{ items.phone }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

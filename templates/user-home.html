@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% include 'status.html' %}
+
+<div class="row">
+
+
+    <div class="col">
+        <br>
+        <h5>Book Leases:</h5>
+        <hr>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Book</th>
+                    <th>Student</th>
+                    <th>Teacher</th>
+                    <th>Member</th>
+                    <th>Lease Date</th>
+                    <th>Status</th>
+                </tr>
+                {% for items in leased %}
+
+                <tr>
+                    <td>{{ items.book }}</td>
+                    <td>{{ items.student }}</td>
+                    <td>{{ items.teacher }}</td>
+                    <td>{{ items.member }}</td>
+                    <td>{{ items.lease_date }}</td>
+                    <td>{{ items.status }}</td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'update_lease' items.id %}">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_lease' items.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+
+
+{% endblock %}
+
+
+

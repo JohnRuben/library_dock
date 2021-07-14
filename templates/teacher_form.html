@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <p><b>Add/update Teacher:</b></p>
+            <form action="" method="POST">
+                <table border="0">
+                {% csrf_token %}
+                {{ form }}
+                </table>
+                <hr>
+                <input class="btn btn-sm btn-info" type="submit" name="submit">
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
