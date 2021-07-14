@@ -1,0 +1,55 @@
+from django.contrib import admin
+from django.urls import path
+from . import views
+from django.contrib.auth import views as auth_views
+
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    # path('student/<str:student>/', views.student, name='student'),
+    # path('student0/', views.student0, name='student0'),
+    # path('teachers/<str:teacher>/', views.teacher, name='teachers'),
+    # path('teachers0/', views.teacher0, name='teachers0'),
+    path('members/<str:member>/', views.member, name='members'),
+    path('members0/', views.member0, name='members0'),
+    path('books/<str:book>/', views.book, name='books'),
+    path('books0/', views.book0, name='books0'),
+    path('create_book/', views.createBook, name='create_book'),
+    path('update_book/<str:updbook>/', views.updateBook, name='update_book'),
+    path('delete_book/<str:book>/', views.deleteBook, name='delete_book'),
+    path('report/', views.report, name='report'),
+    # path('create_student/', views.createStudent, name='create_student'),
+    # path('create_teacher/', views.createTeacher, name='create_teacher'),
+    path('create_member/', views.createMember, name='create_member'),
+    path('create_lease/', views.createLease, name='create_lease'),
+    path('update_lease/<str:lease>/', views.updateLease, name='update_lease'),
+    path('update_member/<str:updmember>/', views.updateMember, name='update_member'),
+    # path('update_student/<str:student>', views.updateStudent, name='update_student'),
+    # path('update_teacher/<str:teacher>/', views.updateTeacher, name='update_teacher'),
+    # path('delete_teacher/<str:teacher>/', views.deleteTeacher, name='delete_teacher'),
+    # path('delete_student/<str:student>', views.deleteStudent, name='delete_student'),
+    path('delete_lease/<str:lease>/', views.deleteLease, name='delete_lease'),
+    path('delete_member/<str:member>/', views.deleteMember, name='delete_member'),
+    path('login/', views.loginpage, name='login'),
+    path('logout/', views.logoutUser, name='logout'),
+    path('register/', views.registerpage, name='register'),
+    # path('register_success/', views.registersuccess, name='register_success'),
+    path('user-home/', views.UserPage, name='user-home'),
+    path('member-profile/', views.ProfilePageMember, name='member-profile'),
+    path('faq/', views.Faq, name='faq'),
+    path('helpdesk/', views.Helpdesk, name='helpdesk'),
+
+    path('reset_password/',
+         auth_views.PasswordResetView.as_view(template_name="password_reset.html"),
+         name="reset_password"),
+    path('reset_password_sent/',
+         auth_views.PasswordResetView.as_view(template_name="password_reset_sent.html"),
+         name="password_reset_done"),
+    path('reset/<uidb64>/<token>',
+         auth_views.PasswordResetView.as_view(template_name="password_reset_form.html"),
+         name="password_reset_confirm"),
+    path('reset_password_complete/',
+         auth_views.PasswordResetView.as_view(template_name="password_reset_done.html"),
+         name="password_reset_complete"),
+
+]
