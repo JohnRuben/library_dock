@@ -1,2 +1,2 @@
 # library_dock
-Library Dock
+Library Dock is a very Basic Library Management Application written in Pythin using Django Framework.
